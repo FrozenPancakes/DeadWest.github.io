@@ -2,41 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Dead West</title>
-  <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
-  <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
+  <title>PyScript External File with Key Detection</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
   <style>
-     @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap'); 
-
-    body {
-      font-family: sans-serif;
-      background-color: black;
-    }
     #console {
-      color: rgb(255, 255, 255);
-      font-family: Rye;
+      background-color: #111;
+      color: #0f0;
+      padding: 10px;
+      height: 200px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      border: 1px solid #333;
+      border-radius: 4px;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
+  <h1>External Python File with PyScript</h1>
+  <p>Press any key. Special action for Enter.</p>
   <div id="console"></div>
 
-  <py-script>
-    from js import document, window
-    from pyodide.ffi import create_proxy
-
-    console = document.getElementById("console")
-
-    def log_key(event):
-        key = event.key
-        if key == "y":
-          print("sub2ades")
-
-    # Wrap the Python function to keep it alive
-    log_key_proxy = create_proxy(log_key)
-
-    # Add the event listener
-    window.addEventListener("keydown", log_key_proxy)
-  </py-script>
+  <!-- Link to external Python file -->
+  <py-script src="main.py"></py-script>
 </body>
 </html>
