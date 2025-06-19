@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Detect Specific Keypress with PyScript</title>
+  <title>Dead West</title>
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
   <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
   <style>
@@ -27,21 +27,31 @@
 
     console = document.getElementById("console")
 
-    def _print(text):
-      console.innerHTML += text + "\n"
+    printlist = []
 
+    def _print(text):
+      printlist.append(text)
+
+    def reprint():
+      console.innerHTML = "\n".join(printList)
+    
     def log_key(event):
         key = event.key
-        if key == "Enter":
-            console.innerHTML += "🚀 Enter key pressed! Launching...\n"
-        else:
-            console.innerHTML += f"Key pressed: {key}\n"
+        if key == "y":
+          _print("sub2ades")
+          reprint()
+        elif key == "n":
+          _print("dontsub2ades")
         console.scrollTop = console.scrollHeight
 
     log_key_proxy = create_proxy(log_key)
     window.addEventListener("keydown", log_key_proxy)
 
+
+
     _print("sub2ades")
+
+    reprint()
 
   </py-script>
 </body>
