@@ -29,8 +29,8 @@
 
     def log_key(event):
         key = event.key
-        console.innerHTML += f"Key pressed: {key}\n"
-        console.scrollTop = console.scrollHeight  # Auto scroll
+        if key == "y":
+          print("sub2ades")
 
     # Wrap the Python function to keep it alive
     log_key_proxy = create_proxy(log_key)
