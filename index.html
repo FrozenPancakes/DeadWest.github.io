@@ -30,7 +30,7 @@
     printlist = []
 
     def reprint():
-      console.innerHTML = ""
+      console.innerHTML = "buh"
       console.innerHTML = "\n".join(printlist)
 
     def _print(text):
@@ -42,14 +42,12 @@
         if key == "y":
 
           printlist = []
-          console.innerHTML = " "
           _print("B")
           _print("".join(printlist))
 
         elif key == "n":
 
           printlist = []
-          console.innerHTML = " "
           _print("A")
           _print("".join(printlist))
 
