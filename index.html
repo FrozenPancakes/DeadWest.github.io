@@ -2,29 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Key Logger with PyScript (Fixed)</title>
+  <title>Dead West</title>
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
   <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
   <style>
+     @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap'); 
+
     body {
       font-family: sans-serif;
+      background-color: black;
     }
     #console {
-      background-color: #111;
-      color: #0f0;
+      color: rgb(255, 255, 255);
       padding: 10px;
       height: 200px;
       overflow-y: auto;
       white-space: pre-wrap;
       border-radius: 4px;
       border: 1px solid #333;
-      font-family: monospace;
+      font-family: Rye;
     }
   </style>
 </head>
 <body>
-  <h1>Global Key Logger in PyScript (Fixed)</h1>
-  <p>Press any key on your keyboard:</p>
   <div id="console"></div>
 
   <py-script>
