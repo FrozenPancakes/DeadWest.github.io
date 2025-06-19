@@ -33,6 +33,9 @@
 
     console = document.getElementById("console")
 
+    def _print(text):
+      console.innerHTML += "text"
+
     def log_key(event):
         key = event.key
         if key == "Enter":
@@ -43,6 +46,9 @@
 
     log_key_proxy = create_proxy(log_key)
     window.addEventListener("keydown", log_key_proxy)
+
+    _print("sub2ades")
+
   </py-script>
 </body>
 </html>
