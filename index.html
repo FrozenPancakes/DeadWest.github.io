@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dead West</title>
+  <meta charset="UTF-8" />
+  <title>PyScript Keypress (External Python)</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+  <style>
+    #console {
+      background: #000;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 5px;
+      height: 200px;
+      overflow-y: scroll;
+      white-space: pre-wrap;
+      font-family: monospace;
+    }
+  </style>
 </head>
 <body>
-    <pre>{{ output }}</pre>
+  <h1>Key Logger (External Python File)</h1>
+  <p>Press any key:</p>
+  <div id="console"></div>
+
+  <!-- Attach external Python file -->
+  <py-script src="main.py"></py-script>
 </body>
 </html>
