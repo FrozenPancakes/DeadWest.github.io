@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Keypress Detection</title>
-
-  <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
-  <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
-
-  <!-- ✅ Correct PyScript config to load the .py file -->
-  <py-config>
-    packages: []
-    paths:
-      - ./main.py
-  </py-config>
-
+  <title>Detect Specific Keypress with PyScript</title>
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
   <style>
+    body {
+      font-family: sans-serif;
+    }
     #console {
       background-color: #111;
       color: #0f0;
@@ -22,19 +16,33 @@
       height: 200px;
       overflow-y: auto;
       white-space: pre-wrap;
+      border-radius: 4px;
       border: 1px solid #333;
       font-family: monospace;
     }
   </style>
 </head>
 <body>
-  <h1>Press any key</h1>
+  <h1>Detect Specific Keypress with PyScript</h1>
+  <p>Press keys — special message for Enter key only.</p>
   <div id="console"></div>
 
-  <!-- ✅ This must call start_logger() -->
   <py-script>
-    import main
-    main.start_logger()
+    from js import document, window
+    from pyodide.ffi import create_proxy
+
+    console = document.getElementById("console")
+
+    def log_key(event):
+        key = event.key
+        if key == "Enter":
+            console.innerHTML += "🚀 Enter key pressed! Launching...\n"
+        else:
+            console.innerHTML += f"Key pressed: {key}\n"
+        console.scrollTop = console.scrollHeight
+
+    log_key_proxy = create_proxy(log_key)
+    window.addEventListener("keydown", log_key_proxy)
   </py-script>
 </body>
 </html>
