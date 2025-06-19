@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>PyScript External Python Fix</title>
+  <meta charset="UTF-8" />
+  <title>Keypress Detection</title>
+
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
   <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
+
+  <!-- ✅ Correct PyScript config to load the .py file -->
+  <py-config>
+    packages: []
+    paths:
+      - ./main.py
+  </py-config>
+
   <style>
     #console {
       background-color: #111;
@@ -13,24 +22,16 @@
       height: 200px;
       overflow-y: auto;
       white-space: pre-wrap;
+      border: 1px solid #333;
       font-family: monospace;
-      border: 1px solid #444;
-      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>Key Detection with External Python File (Fixed)</h1>
+  <h1>Press any key</h1>
   <div id="console"></div>
 
-  <!-- ✅ Point to your Python file as a package -->
- <py-config>
-  packages: []
-  paths:
-    - ./main.py
-</py-config>
-
-  <!-- ✅ Run code to import and call main function -->
+  <!-- ✅ This must call start_logger() -->
   <py-script>
     import main
     main.start_logger()

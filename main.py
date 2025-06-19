@@ -12,5 +12,5 @@ def start_logger():
             console.innerHTML += f"Key pressed: {key}\n"
         console.scrollTop = console.scrollHeight
 
-    listener = create_proxy(log_key)
-    window.addEventListener("keydown", listener)
+    proxy = create_proxy(log_key)
+    window.addEventListener("keydown", proxy)
