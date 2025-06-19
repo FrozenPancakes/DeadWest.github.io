@@ -6,25 +6,22 @@
   <link rel="stylesheet" href="https://pyscript.net/releases/2025.5.1/core.css">
   <script type="module" src="https://pyscript.net/releases/2025.5.1/core.js"></script>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rye&display=swap'); 
+
     body {
       font-family: sans-serif;
     }
     #console {
-      background-color: #111;
-      color: #0f0;
+      background-color: #000000;
+      color: rgb(255, 255, 255);
       padding: 10px;
       height: 200px;
       overflow-y: auto;
-      white-space: pre-wrap;
-      border-radius: 4px;
-      border: 1px solid #333;
-      font-family: monospace;
+      font-family: Rye;
     }
   </style>
 </head>
 <body>
-  <h1>Detect Specific Keypress with PyScript</h1>
-  <p>Press keys — special message for Enter key only.</p>
   <div id="console"></div>
 
   <py-script>
