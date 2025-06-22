@@ -51,9 +51,9 @@
                 printlist[2] = f"Distance: {distance} km"
             else:
                 printlist.append(f"Distance: {distance} km")
-            distance += 50
+            distance += 100
             reprint()
-            await asyncio.sleep(0.25)
+            await asyncio.sleep(0.6)
 
     async def log_key(event):
         global gameState, printlist, detectpresses, distance
