@@ -34,8 +34,6 @@
 
     printlist = []
     detectpresses = True
-    gameState = None 
-    distance = 0
 
     def reprint():
         console.innerHTML = "\n".join(printlist)
@@ -45,14 +43,34 @@
         reprint()
 
     async def game_loop(): 
-        global distance
+
+          _print("Dead West lol")
+          _print(" ")
+          _print("distance")
+          _print("health")
+
+        basicstructures = [
+          {name: "Abandoned House", possibleloot: ["rock", "stick", "silver" },
+          {name: "Abandoned Farm", possibleloot: ["common", "rare"]},
+          {name: "Abandoned Clinic", possibleloot: ["common", "rare", "epic", "legendary"]},
+        ]
+
+        distance = 0 
+        health = 100
+
+        
+
         while True:
             if len(printlist) > 2:
                 printlist[2] = f"Distance: {distance} km"
             else:
                 printlist.append(f"Distance: {distance} km")
+
+            printlist[2] = f"Health: {health}"
+            
             distance += 100
             reprint()
+
             await asyncio.sleep(0.6)
 
     async def log_key(event):
@@ -70,12 +88,7 @@
 
         elif key == "n" and detectpresses:
             detectpresses = False  
-            gameState = "start"
-            distance = 0
             printlist.clear()
-            _print("Dead West lol")
-            _print(" ")
-            _print(" ")
             await game_loop()
 
         console.scrollTop = console.scrollHeight
