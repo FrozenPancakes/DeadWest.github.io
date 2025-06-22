@@ -10,12 +10,15 @@
 
     body {
       background-color: #000;
+      margin: 0;
+      padding: 20px;
     }
 
     #console {
       color: #fff;
       white-space: pre-wrap;
-      font-family: Rye;
+      font-family: 'Rye', cursive;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -77,7 +80,11 @@
 
         console.scrollTop = console.scrollHeight
 
-    log_key_proxy = create_proxy(log_key, asynchronous=True)
+    # Sync wrapper to run the async log_key function
+    def log_key_wrapper(event):
+        asyncio.ensure_future(log_key(event))
+
+    log_key_proxy = create_proxy(log_key_wrapper)
     window.addEventListener("keydown", log_key_proxy)
 
     # Initial screen
