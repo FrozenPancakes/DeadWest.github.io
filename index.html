@@ -44,19 +44,23 @@
         global detectpresses
 
         key = event.key
-        if key == "y":
+        
+
+
+        if key == "y" and detectpresses == true:
 
           printlist.clear()
           _print("skibidi slicers")
           _print("my mommy said no more skibidi toilet")
           _print("so i put a poo poo in her chocolate")
           _print("")
-          _print("press [y] to start the game")
+          _print("press [n] to start the game")
 
-        elif key == "n":
-
+        elif key == "n" and detectpresses == true:
+          detectpresses = false  
+          
           printlist.clear()
-          _print("A")
+          _print("dead west lol")
 
 
         console.scrollTop = console.scrollHeight
