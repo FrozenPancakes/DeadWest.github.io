@@ -24,11 +24,15 @@
   <py-script>
     from js import document, window
     from pyodide.ffi import create_proxy
+    import time 
 
     console = document.getElementById("console")
 
     printlist = []
     detectpresses = True
+    gameState = None 
+
+    distance = 0 
 
     def reprint():
       console.innerHTML = "buh"
@@ -40,6 +44,8 @@
       reprint()
     
     def log_key(event):
+    
+        global gameState
         global printlist 
         global detectpresses
 
@@ -57,11 +63,22 @@
           _print("press [n] to start the game")
 
         elif key == "n" and detectpresses == True:
+          global distance
+
           detectpresses = False  
           
+          gameState = "start" 
+
           printlist.clear()
           _print("dead west lol")
+          _print("")
+          _print(" ")
 
+        while True
+          printlist[2] = distance: " + str()
+          distance += 100 
+          reprint()
+          time.sleep(0.5)
 
         console.scrollTop = console.scrollHeight
 
@@ -85,7 +102,9 @@
     _print("Good Luck!")
 
     _print(" ")
-    _print("Type [y] to see Complex Instructions otherwise type [n] to Start Playing!!")    
+    _print("Type [y] to see Complex Instructions otherwise type [n] to Start Playing!!") 
+    
+    
 
   </py-script>
 </body>
