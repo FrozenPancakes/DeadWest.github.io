@@ -25,6 +25,7 @@
     from js import document, window
     from pyodide.ffi import create_proxy
     import time 
+    import asyncio
 
     console = document.getElementById("console")
 
@@ -43,6 +44,18 @@
       printlist.append(text)
       reprint()
     
+    async def game_loop():
+        global distance
+        while True:
+            if len(printlist) > 2:
+                printlist[2] = f"Distance: {distance} km"
+            else:
+                printlist.append(f"Distance: {distance} km")
+            distance += 1
+            reprint()
+            await asyncio.sleep(0.5)
+            
+
     def log_key(event):
     
         global gameState
@@ -71,14 +84,9 @@
 
           printlist.clear()
           _print("dead west lol")
-          _print("")
           _print(" ")
-
-          while True:
-            printlist[2] = "distance: " + str(distance)
-            distance += 100 
-            reprint()
-            time.sleep(0.5)
+          _print(" ")
+          await game_loop()
 
         console.scrollTop = console.scrollHeight
 
