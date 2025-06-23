@@ -64,7 +64,7 @@
 
           distance = 0 
           health = 100
-
+          
           structuredistance = random.randint(10,20)/10
 
           while True:
@@ -76,14 +76,19 @@
             reprint()
 
             if distance >= structuredistance:
-              waitingforstructureinput = True 
               _print("")
               _print("Raid structure? [y/n]")
+              waitingforstructureinput = True 
 
               while not waitingforstructureinput:
                 await asyncio.sleep(0.1)
               
-              printlist.pop(5) 
+              await asyncio.sleep(2)
+
+              if len(printlist) > 6:
+                printlist.pop(6)
+              if len(printlist) > 5:
+                printlist.pop(5)
               reprint()
               structuredistance += random.randint(10,20)/10
 
@@ -109,8 +114,10 @@
 
         elif waitingforstructureinput == True:
           if key == "y":
+            _print("wow you raid it")
             waitingforstructureinput = False
           elif key == "n":
+            _print("aw man")
             waitingforstructureinput = False
 
 
