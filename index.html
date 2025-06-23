@@ -80,7 +80,7 @@
               _print("Raid structure? [y/n]")
               waitingforstructureinput = True 
 
-              while not waitingforstructureinput:
+              while waitingforstructureinput:
                 await asyncio.sleep(0.1)
               
               await asyncio.sleep(2)
