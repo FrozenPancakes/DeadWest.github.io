@@ -65,7 +65,7 @@
           distance = 0 
           health = 100
 
-          structuredistance = random.randint(3000,5000)
+          structuredistance = random.randint(5,10)
 
           while True:
             if len(printlist) > 2:
@@ -83,7 +83,10 @@
               while not waitingforstructureinput:
                 await asyncio.sleep(0.1)
               
-              reprint.pop(5) 
+              printlist.pop(5) 
+              reprint()
+              structuredistance += random.randint(5,10)
+
 
             await asyncio.sleep(0.6)
 
