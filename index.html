@@ -85,6 +85,8 @@
               
               await asyncio.sleep(2)
 
+              if len(printlist) > 7:
+                printlist.pop(7)
               if len(printlist) > 6:
                 printlist.pop(6)
               if len(printlist) > 5:
@@ -114,10 +116,12 @@
 
         elif waitingforstructureinput == True:
           if key == "y":
-            _print("wow you raid it")
+            _print("")
+            _print("You choose to raid it!")
             waitingforstructureinput = False
           elif key == "n":
-            _print("aw man")
+            _print("")
+            _print("You choose not to raid it.")
             waitingforstructureinput = False
 
 
