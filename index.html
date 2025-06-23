@@ -72,7 +72,7 @@
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
                 printlist[3] = f"Distance: {distance} km"            
-            distance += 100
+            distance += 0.025
             reprint()
 
             if distance >= structuredistance:
@@ -94,9 +94,8 @@
 
         if key == "y" and detectpresses:
             printlist.clear()
-            _print("skibidi slicers")
-            _print("my mommy said no more skibidi toilet")
-            _print("so i put a poo poo in her chocolate")
+            _print("When fleeing it is a 1/2 Chance of succeeding and takes 3 HP")
+            _print("1 Tick of Fuel = 25m of distance")
             _print("")
             _print("press [n] to start the game")
 
