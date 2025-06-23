@@ -29,11 +29,13 @@
     from js import document, window
     from pyodide.ffi import create_proxy
     import asyncio
+    import random 
 
     console = document.getElementById("console")
 
     printlist = []
     detectpresses = True
+    waitingforstructureinput = False
 
     def reprint():
         console.innerHTML = "\n".join(printlist)
@@ -43,20 +45,27 @@
         reprint()
 
     async def game_loop(): 
+          global waitingforstructureinput
 
           _print("Dead West lol")
           _print(" ")
           _print("distance")
           _print("health")
 
+          items = [
+
+          ]
+
           basicstructures = [
             {"name": "Abandoned House", "possibleloot": ["rock", "stick", "silver"]},
-            {"name": "Abandoned Farm", "possibleloot": ["common", "rare"]},
-            {"name": "Abandoned Clinic", "possibleloot": ["common", "rare", "epic", "legendary"]}
+            {"name": "Abandoned Farm", "possibleloot": ["rock", "stick", "wood planks"]},
+            {"name": "Abandoned Clinic", "possibleloot": ["bandage"]}
           ]
 
           distance = 0 
           health = 100
+
+          structuredistance = random.randint(3000,5000)
 
           while True:
             if len(printlist) > 2:
@@ -65,6 +74,16 @@
                 printlist[3] = f"Distance: {distance} km"            
             distance += 100
             reprint()
+
+            if distance >= structuredistance:
+              waitingforstructureinput = True 
+              _print("")
+              _print("Raid structure? [y/n]")
+
+              while not waitingforstructureinput:
+                await asyncio.sleep(0.1)
+              
+              reprint.pop(5) 
 
             await asyncio.sleep(0.6)
 
@@ -86,16 +105,22 @@
             printlist.clear()
             await game_loop()
 
+        elif waitingforstructureinput == True:
+          if key == "y":
+            waitingforstructureinput = False
+          elif key == "n:"
+            waitingforstructureinput = False
+
+
+
         console.scrollTop = console.scrollHeight
 
-    # Sync wrapper to run the async log_key function
     def log_key_wrapper(event):
         asyncio.ensure_future(log_key(event))
 
     log_key_proxy = create_proxy(log_key_wrapper)
     window.addEventListener("keydown", log_key_proxy)
 
-    # Initial screen
     _print("DEAD WEST")
     _print("Welcome to the Game")
     _print("be sure to sub 2 ades!!!")
