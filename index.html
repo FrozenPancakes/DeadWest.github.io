@@ -65,13 +65,13 @@
           distance = 0 
           health = 100
 
-          structuredistance = random.randint(5,10)
+          structuredistance = random.randint(10,20)/10
 
           while True:
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
-                printlist[3] = f"Distance: {round(distance,3)} km"            
+                printlist[3] = f"Distance: {distnace:.2f} km"            
             distance += 0.025
             reprint()
 
@@ -85,7 +85,7 @@
               
               printlist.pop(5) 
               reprint()
-              structuredistance += random.randint(1,2)
+              structuredistance += random.randint(10,20)/10
 
 
             await asyncio.sleep(0.6)
