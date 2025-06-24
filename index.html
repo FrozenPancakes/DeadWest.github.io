@@ -36,6 +36,8 @@
     printlist = []
     detectpresses = True
     waitingforstructureinput = False
+    temp = None
+    temp2 = None
 
     def reprint():
         console.innerHTML = "\n".join(printlist)
@@ -45,7 +47,7 @@
         reprint()
 
     async def game_loop(): 
-          global waitingforstructureinput
+          global temp, waitingforstructureinput, temp2
 
           _print("Dead West lol")
           _print(" ")
@@ -69,12 +71,17 @@
           
           structuredistance = random.randint(10,20)/10
           nextstructure = basicstructures[random.randint(0,(len(basicstructures))-1)]["name"]
+          
+          def damage(damage):
+            health -= damage 
+            printlist[2] = f"Health: {health}"
+            reprint()
 
           while True:
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
-                printlist[3] = f"Fuel: {fuel} ticks"
+                printlist[3] = f"Fuel: {fuel}"
             if len(printlist) > 4:
                 printlist[4] = f"Distance: {distance:.3f} km" 
 
@@ -101,19 +108,61 @@
               if len(printlist) > 10:
                 printlist.pop(6)
               reprint()
+
+              rng = random.radnint(1,3)
+
+              if temp = "raid":
+                if rng > 1:
+                  _print(f"You spot a zombie and it looks hungry.")
+                  _print("Do you flee? [y/n]")
+                  temp = True 
+                  while temp:
+                    await asyncio.sleep(0.1)
+                  await asyncio.sleep(2)
+
+                  if len(printlist) > 5:
+                    printlist.pop(5)
+                  if len(printlist) > 6:
+                    printlist.pop(6)
+
+                  if temp2 == "flee":
+                    damage(3)
+                    if len(printlist) > 7:
+                      printlist.pop(7)
+                    if len(printlist) > 8:
+                      printlist.pop(8)
+                  elif temp2 == "stay":
+                  _print("")
+                    if random.randint(1,2) == 1:
+                      rng = randint(1,3)
+                      if randint = 1:
+                        _print("you violently smack the zombie to death.")
+                      elif randint = 2:
+                        _print("you bonk the zombie in the head with your crowbar and it collapses")
+                      else:
+                        _print("you brutally jab the zombie in the stomach and it faints.")
+                    else: 
+                      _print("The zombie mauls you and then in self defense you hit the zombie to death")
+                      damage(random.randint(3,6))
+                    
+                    await asyncio.sleep(2)
+
+                    if len(printlist) > 5:
+                      printlist.pop(5)
+
               structuredistance += random.randint(10,20)/10
 
 
             await asyncio.sleep(0.6)
 
     async def log_key(event):
-        global gameState, printlist, detectpresses, distance, waitingforstructureinput
+        global printlist, detectpresses, distance, waitingforstructureinput, temp, temp2
 
         key = event.key
 
         if key == "y" and detectpresses:
             printlist.clear()
-            _print("When fleeing it is a 1/2 Chance of succeeding and takes 3 HP")
+            _print("When fleeing it takes 3 HP")
             _print("1 Tick of Fuel = 1km of distance")
             _print("")
             _print("press [n] to start the game")
@@ -127,13 +176,26 @@
           if key == "y":
             _print("")
             _print("You choose to raid it!")
+            
+            temp = "raid"
+
             waitingforstructureinput = False
           elif key == "n":
             _print("")
             _print("You choose not to raid it.")
             waitingforstructureinput = False
 
+            temp = "notraid"
 
+        elif temp == True:
+          if key == "y":
+            _print("")
+            _print("You fled! -5 HP.")
+            temp = "false"
+            temp2 = "flee"
+          elif key == "n":
+            temp = "false"
+            temp2 = "stay"
 
         console.scrollTop = console.scrollHeight
 
