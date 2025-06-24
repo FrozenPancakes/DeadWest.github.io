@@ -73,6 +73,7 @@
           nextstructure = basicstructures[random.randint(0,(len(basicstructures))-1)]["name"]
           
           def damage(damage):
+            global health, printlist
             health -= damage 
             printlist[2] = f"Health: {health}"
             reprint()
