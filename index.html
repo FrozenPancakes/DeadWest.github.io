@@ -63,7 +63,7 @@
             {"name": "Abandoned Clinic", "possibleloot": ["bandage"]}
           ]
 
-          fuel = 100
+          fuel = 10
           distance = 0 
           health = 100
           
@@ -74,10 +74,13 @@
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
-                printlist[3] = f"Fuel: {fuel:.3f} km"
+                printlist[3] = f"Fuel: {fuel} ticks"
             if len(printlist) > 4:
-                printlist[4] = f"Distance: {distance:.3f} km"            
-            distance += 0.025
+                printlist[4] = f"Distance: {distance:.3f} km" 
+
+            if fuel <= 0 
+              distance += 0.025
+              fuel -= 0.025
 
             reprint()
 
@@ -111,7 +114,7 @@
         if key == "y" and detectpresses:
             printlist.clear()
             _print("When fleeing it is a 1/2 Chance of succeeding and takes 3 HP")
-            _print("1 Tick of Fuel = 100m of distance")
+            _print("1 Tick of Fuel = 1km of distance")
             _print("")
             _print("press [n] to start the game")
 
