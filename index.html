@@ -62,22 +62,27 @@
             {"name": "Abandoned Clinic", "possibleloot": ["bandage"]}
           ]
 
+          fuel = 100
           distance = 0 
           health = 100
           
           structuredistance = random.randint(10,20)/10
+          nextstructure = basicstructures[random.randint(0,(len(basicstructures))-1)]["name"]
 
           while True:
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
-                printlist[3] = f"Distance: {distance:.3f} km"            
+                printlist[3] = f"Fuel: {fuel:.3f} km"
+            if len(printlist) > 4:
+                printlist[4] = f"Distance: {distance:.3f} km"            
             distance += 0.025
+
             reprint()
 
             if distance >= structuredistance:
               _print("")
-              _print("Raid structure? [y/n]")
+              _print(f"Raid {nextstructure} ? [y/n]")
               waitingforstructureinput = True 
 
               while waitingforstructureinput:
@@ -85,12 +90,12 @@
               
               await asyncio.sleep(2)
 
-              if len(printlist) > 7:
+              if len(printlist) > 8:
+                printlist.pop(8)
+              if len(printlist) > 9:
                 printlist.pop(7)
-              if len(printlist) > 6:
+              if len(printlist) > 10:
                 printlist.pop(6)
-              if len(printlist) > 5:
-                printlist.pop(5)
               reprint()
               structuredistance += random.randint(10,20)/10
 
@@ -105,7 +110,7 @@
         if key == "y" and detectpresses:
             printlist.clear()
             _print("When fleeing it is a 1/2 Chance of succeeding and takes 3 HP")
-            _print("1 Tick of Fuel = 25m of distance")
+            _print("1 Tick of Fuel = 100m of distance")
             _print("")
             _print("press [n] to start the game")
 
@@ -147,7 +152,7 @@
     _print(" ")
 
     _print("HOW TO PLAY")
-    _print("Goal: Reach 100km.")
+    _print("Goal: Reach 50km.")
     _print("Raid houses/cities to gather and sell items.")
     _print("You carry a crowbar and have a sack that holds 25kg.")
     _print("Add coal to the train furnace to travel.")
