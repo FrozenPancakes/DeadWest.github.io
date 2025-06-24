@@ -32,8 +32,9 @@
     import random 
 
     console = document.getElementById("console")
-
+a
     printlist = []
+    health = None
     detectpresses = True
     waitingforstructureinput = False
     temp = None
@@ -138,9 +139,9 @@
                     _print("")
                     if random.randint(1,2) == 1:
                       rng = random.randint(1,3)
-                      if random.randint == 1:
+                      if rng == 1:
                         _print("you violently smack the zombie to death.")
-                      elif random.randint == 2:
+                      elif rng == 2:
                         _print("you bonk the zombie in the head with your crowbar and it collapses")
                       else:
                         _print("you brutally jab the zombie in the stomach and it faints.")
@@ -152,6 +153,11 @@
 
                     if len(printlist) > 6:
                       printlist.pop(6)
+                else:
+                  if len(printlist) > 6:
+                    printlist.pop(6)
+                  if len(printlist) > 7:
+                    printlist.pop(7)
 
               structuredistance += random.randint(10,20)/10
 
