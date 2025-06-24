@@ -81,7 +81,7 @@
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
-                printlist[3] = f"Fuel: {fuel}"
+                printlist[3] = f"Fuel: {fuel:.3f}"
             if len(printlist) > 4:
                 printlist[4] = f"Distance: {distance:.3f} km" 
 
@@ -109,7 +109,7 @@
                 printlist.pop(6)
               reprint()
 
-              rng = random.radnint(1,3)
+              rng = random.randint(1,3)
 
               if temp == "raid":
                 if rng > 1:
