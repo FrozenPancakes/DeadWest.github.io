@@ -74,7 +74,7 @@
           distance = 1 
           health = 100
           
-          structuredistance = random.randint(10,20)/10
+          structuredistance = random.randint(100,200)/100
           structurenumber = random.randint(0,len(basicstructures))-1
           nextstructure = basicstructures[structurenumber]["name"]
           itemsinstructure = []
@@ -179,7 +179,7 @@
                   await asyncio.sleep(5)
                   clearbelowmain()
 
-              structuredistance += random.randint(10,20)/10
+              structuredistance += random.randint(100,200)/100
 
 
             await asyncio.sleep(0.6)
