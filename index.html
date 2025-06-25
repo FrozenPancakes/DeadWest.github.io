@@ -77,6 +77,7 @@
           structuredistance = random.randint(10,20)/10
           structurenumber = random.randint(0,len(basicstructures))-1
           nextstructure = basicstructures[structurenumber]["name"]
+          itemsinstructure = []
           
           def damage(damage):
             global health, printlist
@@ -162,10 +163,16 @@
                 else:
                   _print("")
                   _print("you see the following objects in the room:")
+                  _print("")
+
+                  
+                  for i in range(random.randint(2,8)):
+                    itemsinstructure.append(basicstructures[structurenumber]["possibleloot"][random.randint(1,len(basicstructures[structurenumber]["possibleloot"])) - 1])
+
                   for item in basicstructures[structurenumber]["possibleloot"]:
                     _print(item)
 
-                  await asyncio.sleep(2)
+                  await asyncio.sleep(5)
                   clearbelowmain()
 
               structuredistance += random.randint(10,20)/10
