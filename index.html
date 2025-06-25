@@ -75,7 +75,8 @@
           health = 100
           
           structuredistance = random.randint(10,20)/10
-          nextstructure = basicstructures[random.randint(0,(len(basicstructures))-1)]["name"]
+          structurenumber = random.randint(0,len(basicstructures))-1
+          nextstructure = basicstructures[structurenumber]["name"]
           
           def damage(damage):
             global health, printlist
@@ -148,7 +149,13 @@
                       damage(random.randint(3,6))
                     
                     await asyncio.sleep(2)
+                    clearbelowmain()
 
+                    _print("you see the following objects:")
+                    for i, in range(len(basicstructures[structurenumber]["possibleloot"]):
+                      print(basicstructures[i - 1]["name"])
+
+                    await asyncio.sleep(2)
                     clearbelowmain()
 
                 else:
@@ -200,6 +207,18 @@
           elif key == "n":
             temp = False
             temp2 = "stay"
+
+        elif temp = "items":
+          if key == "1":
+          if key == "2":
+          if key == "3":
+          if key == "4":
+          if key == "5":
+          if key == "6":
+          if key == "7":
+          if key == "8":
+          if key == "9":
+          if key == "0":
 
         console.scrollTop = console.scrollHeight
 
