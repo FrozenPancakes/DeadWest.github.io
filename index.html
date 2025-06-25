@@ -94,7 +94,7 @@
             reprint()
 
             if distance >= structuredistance:
-              _print("")
+              _print(" ")
               _print(f"Raid {nextstructure} ? [y/n]")
               waitingforstructureinput = True 
 
@@ -103,14 +103,7 @@
               
               await asyncio.sleep(2)
 
-              if len(printlist) > 5:
-                printlist.pop(5)
-              if len(printlist) > 6:
-                printlist.pop(6)
-              if len(printlist) > 7:
-                printlist.pop(7)
-              if len(printlist) > 8:
-                printlist.pop(8)
+              printlist = printlist[:5]
 
               reprint()
 
@@ -126,19 +119,11 @@
                     await asyncio.sleep(0.1)
                   await asyncio.sleep(2)
 
-                  if len(printlist) > 5:
-                    printlist.pop(5)
-                  if len(printlist) > 6:
-                    printlist.pop(6)
-                  if len(printlist) > 7:
-                    printlist.pop(7)
+                  printlist = printlist[:5]
 
                   if temp2 == "flee":
                     damage(3)
-                    if len(printlist) > 5:
-                      printlist.pop(5)
-                    if len(printlist) > 6:
-                      printlist.pop(6)
+                    printlist = printlist[:5]
 
                   elif temp2 == "stay":
                     _print("")
@@ -156,15 +141,10 @@
                     
                     await asyncio.sleep(2)
 
-                    if len(printlist) > 5:
-                      printlist.pop(5)
+                    printlist = printlist[:5]
+
                 else:
-                  if len(printlist) > 5:
-                    printlist.pop(5)
-                  if len(printlist) > 6:
-                    printlist.pop(6)
-                  if len(printlist) > 7:
-                    printlist.pop(7)
+                  printlist = printlist[:5]
 
               structuredistance += random.randint(10,20)/10
 
