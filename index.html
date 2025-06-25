@@ -153,7 +153,7 @@
 
                     _print("")
                     _print("you see the following objects in the room:")
-                    for item in range(len(basicstructures[structurenumber]["possibleloot"])):
+                    for item in basicstructures[structurenumber]["possibleloot"]
                       _print(item)
 
                     await asyncio.sleep(2)
@@ -162,7 +162,7 @@
                 else:
                   _print("")
                   _print("you see the following objects in the room:")
-                  for item in range(len(basicstructures[structurenumber]["possibleloot"])):
+                  for item in basicstructures[structurenumber]["possibleloot"]:
                     _print(item)
 
                   await asyncio.sleep(2)
