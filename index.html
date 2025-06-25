@@ -103,7 +103,7 @@
             if len(printlist) > 4:
                 printlist[4] = f"Distance: {distance:.3f} km" 
 
-            if fuel >= 0:
+            if fuel > 0:
               distance += 0.025
               fuel -= 0.025
 
@@ -159,7 +159,13 @@
 
                     _print("")
                     _print("you see the following objects in the room:")
-                    for item in basicstructures[structurenumber]["possibleloot"]:
+                    
+                    itemsinstructure.clear()
+                    
+                    for i in range(random.randint(2,8)):
+                      itemsinstructure.append(random.choice(basicstructures[structurenumber]["possibleloot"]))
+
+                    for item in itemsinstructure:
                       _print(item)
 
                     await asyncio.sleep(2)
@@ -169,9 +175,11 @@
                   _print("")
                   _print("you see the following objects in the room:")
                   _print("")
+
+                  itemsinstructure.clear()
                   
                   for i in range(random.randint(2,8)):
-                    itemsinstructure.append(basicstructures[structurenumber]["possibleloot"][random.randint(1,len(basicstructures[structurenumber]["possibleloot"])) - 1])
+                    itemsinstructure.append(random.choice(basicstructures[structurenumber]["possibleloot"]))
 
                   for item in itemsinstructure:
                     _print(item)
