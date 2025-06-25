@@ -78,6 +78,11 @@
             health -= damage 
             printlist[2] = f"Health: {health}"
             reprint()
+          
+          def clearbelowmain():
+            global printlist
+            printlist = printlist[:5]
+            reprint()
 
           while True:
             if len(printlist) > 2:
@@ -103,7 +108,7 @@
               
               await asyncio.sleep(2)
 
-              printlist = printlist[:5]
+              clearbelowmain()
 
               reprint()
 
@@ -119,11 +124,11 @@
                     await asyncio.sleep(0.1)
                   await asyncio.sleep(2)
 
-                  printlist = printlist[:5]
+                  clearbelowmain()
 
                   if temp2 == "flee":
                     damage(3)
-                    printlist = printlist[:5]
+                    clearbelowmain()
 
                   elif temp2 == "stay":
                     _print("")
@@ -141,10 +146,10 @@
                     
                     await asyncio.sleep(2)
 
-                    printlist = printlist[:5]
+                    clearbelowmain()
 
                 else:
-                  printlist = printlist[:5]
+                  clearbelowmain()
 
               structuredistance += random.randint(10,20)/10
 
