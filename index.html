@@ -91,6 +91,11 @@
             reprint()
 
           while True:
+
+            if distance >= 50:
+              _print("You won!!")
+              break
+
             if len(printlist) > 2:
                 printlist[2] = f"Health: {health}"
             if len(printlist) > 3:
@@ -164,7 +169,6 @@
                   _print("")
                   _print("you see the following objects in the room:")
                   _print("")
-
                   
                   for i in range(random.randint(2,8)):
                     itemsinstructure.append(basicstructures[structurenumber]["possibleloot"][random.randint(1,len(basicstructures[structurenumber]["possibleloot"])) - 1])
@@ -179,7 +183,7 @@
 
 
             await asyncio.sleep(0.6)
-
+          
     async def log_key(event):
         global printlist, detectpresses, distance, waitingforstructureinput, temp, temp2
 
